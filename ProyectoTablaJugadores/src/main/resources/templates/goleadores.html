@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+ <head th:replace = "~{layout/base :: head}">
+  </head>
+  
+  <style th:replace="~{layout/base::css}">
+</style>
+<body>
+
+ <div class="container-fluid">
+
+  <!-- nav -->
+   <nav th:replace="~{layout/base::navbar}"></nav>
+  
+   <!-- Offcanvas -->
+   <div th:replace="~{layout/base::offcanvas}">
+</div>
+
+<h1>Liga 1 - Goleadores</h1>
+<main class="row">
+<div class="container-fluid" >
+
+<table class="table text-center table-hover table-bordered border-light goleadores" id="tablaGoleadores">
+<thead >
+<tr id="filaConTitulos" >
+
+<!--<th  scope="col">ID</th>-->
+<th  scope="col">Nombre</th>
+<th  scope="col" class="text-center">Goles</th>
+<th  scope="col">Partidos</th>
+<th  scope="col">Edad</th>
+<th  scope="col">Puesto</th>
+<th  scope="col">Equipo</th>
+<th  scope="col">Pais</th>
+<th  scope="col">Segundo Pais</th>
+
+</tr>
+</thead>
+
+<tbody class="text-light">
+
+<tr th:each="g, iter : ${goleadores}">
+
+        <!-- <td th:text="${iter.index + 1}"></td>-->
+        <td th:text="${g[0]} + ' ' + ${g[1]}"></td>
+        <td th:text="${g[2]}"></td>
+        <td th:text="${g[3]}"></td>
+        <td th:text="${g[4]}"></td>
+        <td th:text="${g[5]}"></td>
+        <td th:text="${g[6]}"></td>
+          <td> 
+           <span th:if="${g[9] != null and !#strings.isEmpty(g[9])}" 
+           	th:class="'fi fi-' + ${#strings.toLowerCase(g[9])} + ' me-1'" style="font-size: 1.5rem;"></span>
+           		<span th:text="${g[7]} ?: '—'"></span>
+           </td>
+
+
+            <td>
+            	<span th:if="${g[10] != null and !#strings.isEmpty(g[10])}"
+            		th:class="'fi fi-' + ${#strings.toLowerCase(g[10])} + ' me-1'" style="font-size: 1.5rem;">
+            	</span>
+                <span th:text="${g[8]} ?: '—'"></span>
+             </td>
+        </tr>
+</tbody>
+</table>
+</div>
+
+</main>
+</div>
+
+<footer th:replace="~{layout/base::footer}">
+  		</footer>
+  		
+  	
+  		
+
+</body>
+</html>

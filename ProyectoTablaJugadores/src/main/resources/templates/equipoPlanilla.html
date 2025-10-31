@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/base :: head}">
+</head>
+
+<style th:replace="~{layout/base::css}">
+
+</style>
+<body>
+<div class="container-fluid">
+    <nav th:replace="~{layout/base::navbar}"></nav>
+    <div th:replace="~{layout/base::offcanvas}"></div>
+
+    <h1 class="mx-auto p-2 text-center">Editar Equipo</h1>
+    
+    <div class="row mx-auto p-2">
+        <div class="mx-auto p-2">
+        
+        <form th:action="@{/equipos/actualizar}" th:object="${equipo}" method="post" class="needs-validation mx-auto w-25" novalidate> 
+        
+        <input type="hidden" th:field="*{idEquipo}">
+        <div class="form-floating mb-3">
+        	<input type="text" th:field="*{nombreEquipo}" class="form-control"  placeholder="" required >
+        		<label>Nombre</label>
+			    <div class="valid-feedback">
+      		    </div>
+			    <div class="invalid-tooltip">
+       				Escribir nombre
+      		    </div>
+      		    <div class="mt-2">
+      			<button type="submit" class="btn btn-success"><i class="bi bi-hand-thumbs-up text-white me-1"></i>Guardar Cambios</button>
+                <a th:href="@{/equipos/lista}" class="btn btn-secondary">Cancelar</a>	  
+                </div>
+      				  
+        </div>
+    
+        </form>
+        </div>
+     </div>
+</div>
+</body>
+</html>

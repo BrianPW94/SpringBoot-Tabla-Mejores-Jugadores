@@ -1,0 +1,24 @@
+
+# Liga 1 - Tabla de Goleadores
+
+Una aplicación web en **Spring Boot + Thymeleaf** para mostrar goleadores, amonestados y estadísticas de arqueros.
+
+---
+
+## Funcionalidades
+
+- Lista de jugadores con banderas
+- Tabla de goleadores ordenada
+- Tarjetas amarillas/rojas
+- Estadísticas de arqueros (atajadas, penales tapados, etc.)
+- Responsive con Bootstrap
+
+---
+
+## Tecnologías
+
+- **Backend**: Spring Boot, JPA
+- **Frontend**: Thymeleaf, Bootstrap 5, DataTables
+- **Base de datos**: MySQL
+
+

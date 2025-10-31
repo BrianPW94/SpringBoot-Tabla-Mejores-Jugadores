@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+  <head th:replace = "~{layout/base :: head}">
+  </head>
+  
+  <style th:replace="~{layout/base::css}">
+</style>
+
+
+  <body>
+  <div class="container-fluid">
+
+  <!-- nav -->
+   <nav th:replace="~{layout/base::navbar}"></nav>
+  
+   <!-- Offcanvas -->
+   <div th:replace="~{layout/base::offcanvas}">
+</div>
+
+  <h1>Liga 1 Equipos</h1>
+  
+  <main class="row">
+  <section class="col-lg-4 col-md-6 col-sm-12 p-5">
+  <h3>Agregar Equipo</h3>
+  
+  <form th:action="@{/equipos/guardar}" method="post" th:object="${equipoAAgregar}" class="needs-validation" novalidate>
+  <div class="form-floating mb-3">
+					  <input type="text" th:field="*{nombreEquipo}" class="form-control"  placeholder="" required >
+					  <label>Nombre</label>
+					  <div class="valid-feedback">
+      				  </div>
+					  <div class="invalid-tooltip">
+       					Escribir nombre
+      				  </div>
+					  <button type="submit" class="btn btn-primary mt-2">
+						<span>AGREGAR</span>
+					</button>
+					  </div>
+  </form>
+  </section>
+  
+  <section class="col-lg-8 col-md-6 col-sm-12 p-5">
+  <table class="table" id="TablaEquipos">
+				  <thead>
+				    <tr>
+				      <th scope="col">Id</th>
+				      <th scope="col">Nombre</th>
+				      <th scope="col" class="text-center">Editar</th>
+				      <th scope="col" class="text-center">Eliminar</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				  <tr th:each="temp : ${equipos}">
+				  <th scope="row" th:text="${temp.idEquipo}"></th>
+				   <td th:text="${temp.nombreEquipo}"></td>
+				   
+				   <td class="text-center">
+    				<a th:href="@{/equipos/editar/{id}(id=${temp.idEquipo})}" 
+       					class="btn btn-sm btn-primary"> <i class="bi bi-pencil-square text-white"></i>
+       					Editar
+       					</a>
+       				</td>
+				      
+				   <td class="text-center">
+				   	<a th:href="@{/equipos/borrar/{id}(id=${temp.idEquipo})}" 
+				   		class="btn btn-sm btn-danger"
+				   			onclick="return confirm('¿Estás seguro de eliminar este equipo?')">
+				   				<i class="bi bi-trash-fill text-white" ></i>
+				   				Borrar
+				   	</a>
+				   </td>	
+				  </tr>
+				  </tbody>
+				  </table>
+  </section>
+  </main>
+</nav>
+
+    </div>
+    
+    
+    <footer th:replace="~{layout/base::footer}">
+  		</footer>
+  		
+  		
+  		<script>
+  	// Example starter JavaScript for disabling form submissions if there are invalid fields
+  		(() => {
+  		  'use strict'
+
+  		  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  		  const forms = document.querySelectorAll('.needs-validation')
+
+  		  // Loop over them and prevent submission
+  		  Array.from(forms).forEach(form => {
+  		    form.addEventListener('submit', event => {
+  		      if (!form.checkValidity()) {
+  		        event.preventDefault()
+  		        event.stopPropagation()
+  		      }
+
+  		      form.classList.add('was-validated')
+  		    }, false)
+  		  })
+  		})()
+  		</script>
+  		
+  		<script>
+  		document.addEventListener('DOMContentLoaded', function(){
+
+  			const mensajeOK = '[[${guardadoCorrecto}]]';
+  			
+  			if (mensajeOK && mensajeOK.trim().length > 0){
+
+  				Swal.fire({
+  	  	  		  title: mensajeOK,
+  	  	  		  icon: "success"
+  	  	  		});
+  			}
+  			
+});
+  		
+  		</script>
+  		
+  		<!-- script DataTable -->
+  	<script>
+var table = new DataTable('#TablaEquipos', {
+    language: {
+        url: '//cdn.datatables.net/plug-ins/2.3.3/i18n/es-ES.json',
+    },
+}); </script>
+   <!--  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>-->
+  </body>
+</html>

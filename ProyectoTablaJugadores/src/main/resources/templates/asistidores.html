@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+ <head th:replace = "~{layout/base :: head}">
+  </head>
+  
+  <style th:replace="~{layout/base::css}">
+</style>
+<body>
+
+ <div class="container-fluid">
+
+  <!-- nav -->
+   <nav th:replace="~{layout/base::navbar}"></nav>
+  
+   <!-- Offcanvas -->
+   <div th:replace="~{layout/base::offcanvas}">
+</div>
+
+<h1>Liga 1 - Asistidores</h1>
+<main class="row">
+<div class="container-fluid" >
+
+<table class="table text-center table-hover table-bordered border-light goleadores" id="tablaAsistidores">
+<thead >
+<tr id="filaConTitulos" >
+<!--  <th  scope="col">ID</th>-->
+<th  scope="col">Nombre</th>
+<th  scope="col">Apellido</th>
+<th  scope="col" class="text-center">Asistencias</th>
+<th  scope="col">Partidos</th>
+<th  scope="col">Edad</th>
+<th  scope="col">Puesto</th>
+<th  scope="col">Equipo</th>
+<th  scope="col">Pais</th>
+<th  scope="col">Segundo Pais</th>
+
+</tr>
+</thead>
+
+<tbody class="text-light">
+
+<tr th:each="a, iter : ${asistidores}">
+
+        <!--  <td th:text="${iter.index + 1}"></td>-->
+        <td th:text="${a[0]}"></td>
+        <td th:text="${a[1]}"></td>
+        <td th:text="${a[2]}"></td>
+        <td th:text="${a[3]}"></td>
+        <td th:text="${a[4]}"></td>
+        <td th:text="${a[5]}"></td>
+        <td th:text="${a[6]}"></td>
+        <td> 
+           <span th:if="${a[9] != null and !#strings.isEmpty(a[9])}" 
+           	th:class="'fi fi-' + ${#strings.toLowerCase(a[9])} + ' me-1'" style="font-size: 1.5rem;"></span>
+           		<span th:text="${a[7]} ?: '—'"></span>
+           </td>
+
+
+            <td>
+            	<span th:if="${a[10] != null and !#strings.isEmpty(a[10])}"
+            		th:class="'fi fi-' + ${#strings.toLowerCase(a[10])} + ' me-1'" style="font-size: 1.5rem;">
+            	</span>
+                <span th:text="${a[8]} ?: '—'"></span>
+             </td>
+
+        
+ 
+        </tr>
+</tbody>
+</table>
+</div>
+
+</main>
+</div>
+
+<footer th:replace="~{layout/base::footer}">
+  		</footer>
+
+  		
+</body>
+</html>

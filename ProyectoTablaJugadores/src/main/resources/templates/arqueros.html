@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+ <head th:replace = "~{layout/base :: head}">
+  </head>
+  
+  <style th:replace="~{layout/base::css}">
+</style>
+<body>
+
+ <div class="container-fluid">
+
+  <!-- nav -->
+   <nav th:replace="~{layout/base::navbar}"></nav>
+  
+   <!-- Offcanvas -->
+   <div th:replace="~{layout/base::offcanvas}">
+</div>
+
+<h1>Liga 1 - Arqueros</h1>
+
+<main class="row">
+<div class="container-fluid" >
+
+<table class="table text-center table-hover table-bordered border-light goleadores" id="tablaArqueros">
+<thead>
+<tr id="filaConTitulos">
+<th  scope="col">Nombre</th>
+<th  scope="col">Apellido</th>
+<th  scope="col">Edad</th>
+<th  scope="col">Total Tapadas</th>
+<th  scope="col">Partidos</th>
+<th  scope="col">Tapadas / Partidos</th>
+<th  scope="col">Arco en 0</th>
+<th  scope="col">Arco en 0 / Cotejo </th>
+<th  scope="col">Goles En Contra </th>
+<th  scope="col">Goles recibidos / Cotejo </th>
+<th  scope="col">Penales Tapados</th>
+<th  scope="col">Equipo</th>
+<th  scope="col">Pais</th>
+<th  scope="col">Segundo Pais</th>
+</tr>
+</thead>
+<tbody class="text-light">
+<tr th:each ="arq, iter :${arqueros}">
+<td th:text="${arq[0]}"></td>
+<td th:text="${arq[1]}"></td>
+<td th:text="${arq[2]}"></td>
+<td th:text="${arq[3]}"></td>
+<td th:text="${arq[4]}"></td>
+<td th:text="${arq[5]}"></td>
+<td th:text="${arq[6]}"></td>
+<td th:text="${arq[7]}"></td>
+<td th:text="${arq[8]}"></td>
+<td th:text="${arq[9]}"></td>
+<td th:text="${arq[10]}"></td>
+<td th:text="${arq[11]}"></td>
+
+ <td> 
+           <span th:if="${arq[14] != null and !#strings.isEmpty(arq[14])}" 
+           	th:class="'fi fi-' + ${#strings.toLowerCase(arq[14])} + ' me-1'" style="font-size: 1.5rem;"></span>
+           		<span th:text="${arq[12]} ?: '—'"></span>
+           </td>
+ <td>
+            	<span th:if="${arq[15] != null and !#strings.isEmpty(arq[15])}"
+            		th:class="'fi fi-' + ${#strings.toLowerCase(arq[15])} + ' me-1'" style="font-size: 1.5rem;">
+            	</span>
+                <span th:text="${arq[13]} ?: '—'"></span>
+             </td>
+</tr>
+</tbody>
+</table>
+</div>
+</main>
+</div>
+<footer th:replace="~{layout/base::footer}">
+  		</footer>
+  		
+</body>
+</html>
