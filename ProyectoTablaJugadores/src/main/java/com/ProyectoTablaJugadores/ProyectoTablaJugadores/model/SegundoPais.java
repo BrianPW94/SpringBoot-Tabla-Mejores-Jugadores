@@ -21,10 +21,10 @@ public class SegundoPais {
 	@Column (name = "id_segundo_pais")
 	private Long id;
 	
-	@Column(length = 2)
+	@Column(name = "codigo_segundo_pais", length = 2)
 	private String codigoSegundoPais;
 	
-	@Column (name = "Nombre_Segundo_Pais", length = 200, nullable =  false)
+	@Column (name = "nombre_segundo_pais", length = 200, nullable =  false)
 	private String nombre;
 
 	@OneToMany (mappedBy = "segundoPais", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
