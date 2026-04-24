@@ -1,12 +1,16 @@
-FROM eclipse-temurin:21-jdk-jammy
+# ---------- BUILD STAGE ----------
+FROM maven:3.9.9-eclipse-temurin-17 AS build
 
 WORKDIR /app
-
 COPY . .
+RUN mvn clean package -DskipTests
 
-RUN chmod +x mvnw
-RUN ./mvnw clean package -DskipTests
+# ---------- RUN STAGE ----------
+FROM eclipse-temurin:17-jdk-jammy
 
-EXPOSE 8080
+WORKDIR /app
+COPY --from=build /app/target/*.jar app.jar
 
-CMD ["java", "-jar", "target/*.jar"]
+EXPOSE 10000
+
+CMD ["java","-jar","app.jar"]
