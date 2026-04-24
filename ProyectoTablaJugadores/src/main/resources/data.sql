@@ -10,7 +10,8 @@ Insert into puesto (Nombre_Puesto) values
 ('Volante Ofensivo'),
 ('Extremo Derecho'),
 ('Extremo Izquierdo'),
-('Delantero');
+('Delantero')
+ON CONFLICT (id_Puesto) DO NOTHING;
 
 
 INSERT INTO paises   (codigo_pais, nombre_pais) values
@@ -260,7 +261,8 @@ INSERT INTO paises   (codigo_pais, nombre_pais) values
 ('EH', 'Sahara Occidental'),
 ('YE', 'Yemen'),
 ('ZM', 'Zambia'),
-('ZW', 'Zimbabue');
+('ZW', 'Zimbabue')
+ON CONFLICT (id_pais) DO NOTHING;
 
 
 INSERT INTO segundo_pais (codigo_segundo_pais, nombre_segundo_pais) values
@@ -510,4 +512,5 @@ INSERT INTO segundo_pais (codigo_segundo_pais, nombre_segundo_pais) values
 ('EH', 'Sahara Occidental'),
 ('YE', 'Yemen'),
 ('ZM', 'Zambia'),
-('ZW', 'Zimbabue');
+('ZW', 'Zimbabue')
+ON CONFLICT (id_segundo_pais) DO NOTHING;
