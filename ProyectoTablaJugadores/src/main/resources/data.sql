@@ -1,4 +1,4 @@
-Insert into proyectotablajugadores.puesto values
+Insert into puesto values
 (0, 'Arquero'),
 (0, 'Lateral Derecho'),
 (0, 'Defensa Central'),
@@ -263,7 +263,7 @@ INSERT INTO paises   (codigo_pais, nombre_pais) values
 ('ZW', 'Zimbabue');
 
 
-INSERT INTO segundo_pais   (codigo_pais, nombre_pais) values
+INSERT INTO segundo_pais (codigo_pais, nombre_pais) values
 ('00', 'Ninguno'),
 ('AF', 'Afganistán'),
 ('AL', 'Albania'),
