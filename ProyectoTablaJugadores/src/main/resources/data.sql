@@ -263,7 +263,7 @@ INSERT INTO paises   (codigo_pais, nombre_pais) values
 ('ZW', 'Zimbabue');
 
 
-INSERT INTO segundo_pais (codigo_pais, nombre_pais) values
+INSERT INTO SegundoPais (codigo_pais, nombre_pais) values
 ('00', 'Ninguno'),
 ('AF', 'Afganistán'),
 ('AL', 'Albania'),
