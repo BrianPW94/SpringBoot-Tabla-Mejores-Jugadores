@@ -1,4 +1,4 @@
-Insert into puesto (Nombre_Puesto) values
+Insert into puesto values
 ('Arquero'),
 ('Lateral Derecho'),
 ('Defensa Central'),
